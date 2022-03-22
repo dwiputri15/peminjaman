@@ -492,11 +492,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Matakuliah</label>
-                                                    <input type="email" class="form-control" disabled="disabled" placeholder="Disabled input" />
+                                                    <input type="email" class="form-control" readonly="readonly" placeholder="Disabled input" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Semester </label>
-                                                    <select class="form-control" disabled="disabled">
+                                                    <select class="form-control" readonly="readonly">
                                                         <option>1</option>
                                                         <option>2</option>
                                                         <option>3</option>
