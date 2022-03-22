@@ -506,7 +506,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleTextarea">Nama Alat</label>
-                                                    <textarea class="form-control" disabled="disabled" rows="3"></textarea>
+                                                    <textarea class="form-control" readonly="readonly" rows="3"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Jumlah Alat</label>
