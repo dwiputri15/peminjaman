@@ -8,4 +8,10 @@ class Kelola_alat extends CI_Controller
 
         $this->load->view('alat_tersedia');
     }
+
+
+    function tambah_alat(){
+
+        
+    }
 }
