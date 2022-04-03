@@ -75,6 +75,15 @@
                 redirect('login/index');
             }
         }
+
+
+
+        function buat() {
+
+
+            echo password_hash("123", PASSWORD_ARGON2I);
+
+        }
     }
     
     /* End of file Login.php */
