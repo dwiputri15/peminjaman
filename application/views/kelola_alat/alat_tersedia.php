@@ -8,23 +8,10 @@
                                <!--begin::Page Heading-->
                                <div class="d-flex align-items-baseline flex-wrap mr-5">
                                    <!--begin::Page Title-->
-                                   <h5 class="text-dark font-weight-bold my-1 mr-5">Ajax Client Side Examples</h5>
+                                   <h5 class="text-dark font-weight-bold my-1 mr-5"> Alat Praktikum Yang Tersedia</h5>
                                    <!--end::Page Title-->
                                    <!--begin::Breadcrumb-->
-                                   <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-                                       <li class="breadcrumb-item text-muted">
-                                           <a href="" class="text-muted">Crud</a>
-                                       </li>
-                                       <li class="breadcrumb-item text-muted">
-                                           <a href="" class="text-muted">Datatables.net</a>
-                                       </li>
-                                       <li class="breadcrumb-item text-muted">
-                                           <a href="" class="text-muted">Data sources</a>
-                                       </li>
-                                       <li class="breadcrumb-item text-muted">
-                                           <a href="" class="text-muted">Ajax Client-side</a>
-                                       </li>
-                                   </ul>
+
                                    <!--end::Breadcrumb-->
                                </div>
                                <!--end::Page Heading-->
@@ -111,19 +98,30 @@
                                </div>
                                <div class="card-body">
                                    <!--begin: Datatable-->
-                                   <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
+                                   <table class="table table-bordered table-checkable" id="kt_datatable">
                                        <thead>
                                            <tr>
                                                <th>Kode Alat</th>
                                                <th>Nama Alat</th>
                                                <th>Jumlah Alat</th>
-                                               <th>Matakuliah </th>
-                                               <th>Semester </th>
-                                               <th>Status</th>
-                                               <th>Type</th>
-                                               <th>Actions</th>
+                                               <th>Semester</th>
+                                               <th>Aksi</th>
+
+
                                            </tr>
                                        </thead>
+                                       <tbody>
+                                           <tr>
+                                               <td>IF001</td>
+                                               <td>Multimeter</td>
+                                               <td>15</td>
+                                               <td>1</td>
+                                               <td>
+                                                   <a href="" class="btn btn-light-warning btn-sm">Sunting</a>
+                                                   <a href="" class="btn btn-light-danger btn-sm">Hapus</a>
+                                               </td>
+                                           </tr>
+                                       </tbody>
                                    </table>
                                    <!--end: Datatable-->
                                </div>
