@@ -112,6 +112,12 @@
                                     <span class="menu-text">History Peminjaman</span>
                                 </a>
                             </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="<?php echo base_url('registrasi/index') ?>" class="menu-link">
+                                    <i class="menu-icon flaticon2-architecture-and-city"></i>
+                                    <span class="menu-text">Tambah Pengguna</span>
+                                </a>
+                            </li>
 
                         </ul>
                         <!--end::Menu Nav-->
