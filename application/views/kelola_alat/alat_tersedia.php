@@ -91,7 +91,7 @@
                                        </div>
                                        <!--end::Dropdown-->
                                        <!--begin::Button-->
-                                       <a href="#" class="btn btn-primary font-weight-bolder">
+                                       <a href="<?php echo base_url('kelola_alat/tambah_alat') ?>" class="btn btn-primary font-weight-bolder">
                                            <i class="la la-plus"></i> Tambahkan Alat</a>
                                        <!--end::Button-->
                                    </div>
@@ -102,6 +102,7 @@
                                        <thead>
                                            <tr>
                                                <th>Kode Alat</th>
+                                               <th>Kode Matkul</th>
                                                <th>Nama Alat</th>
                                                <th>Jumlah Alat</th>
                                                <th>Semester</th>
@@ -110,18 +111,7 @@
 
                                            </tr>
                                        </thead>
-                                       <tbody>
-                                           <tr>
-                                               <td>IF001</td>
-                                               <td>Multimeter</td>
-                                               <td>15</td>
-                                               <td>1</td>
-                                               <td>
-                                                   <a href="" class="btn btn-light-warning btn-sm">Sunting</a>
-                                                   <a href="" class="btn btn-light-danger btn-sm">Hapus</a>
-                                               </td>
-                                           </tr>
-                                       </tbody>
+
                                    </table>
                                    <!--end: Datatable-->
                                </div>
