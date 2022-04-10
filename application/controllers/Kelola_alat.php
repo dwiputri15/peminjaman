@@ -61,7 +61,7 @@ class Kelola_alat extends CI_Controller
         $this->M_barang->insert($tb_barang);
 
         $isi_pesan = "Alat Praktikum " . $ambilNama . ' berhasil ditambahkan';
-        // $isi_pesan = "Matakuliah berhasil ditambah";
+        $isi_pesan = "Matakuliah berhasil ditambah";
         $this->session->set_flashdata('pesan', $isi_pesan);
 
 
