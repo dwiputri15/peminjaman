@@ -43,38 +43,38 @@
 
                             <div class="form-group">
                                 <label>Kode Alat</label>
-                                <input type="text" name="kd_barang" class="form-control" placeholder="Masukkan Kode Barang" required="" />
+                                <input type="text" name="kd_barang" class="form-control" placeholder="Masukkan Kode Barang" value="<?php echo $tb_barang['kode_barang'] ?>" required="" />
                                 <small>Kode Barang Alat Praktikum</small>
                             </div>
                             <div class="form-group">
                                 <label>Kode Matakuliah</label>
-                                <input type="text" name="kd_matkul" class="form-control" placeholder="Masukkan Kode Matakuliah" required="" />
+                                <input type="text" name="kd_matkul" class="form-control" placeholder="Masukkan Kode Matakuliah" value="<?php echo $tb_barang['kode_matkul'] ?>" required="" />
 
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Nama Barang</label>
-                                        <input type="text" name="nm_barang" class="form-control" placeholder="Nama Alat Praktikum" required="" />
+                                        <input type="text" name="nm_barang" class="form-control" placeholder="Nama Alat Praktikum" value="<?php echo $tb_barang['nama_barang'] ?>" required="" />
                                         <small></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jumlah Barang</label>
-                                        <input type="number" name="jmlh_barang" class="form-control" placeholder="Jumlah Alat Yang Tersedia" required="" />
+                                        <input type="number" name="jmlh_barang" class="form-control" placeholder="Jumlah Alat Yang Tersedia" value="<?php echo $tb_barang['jumlah_barang'] ?>" required="" />
 
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Status </label>
-                                <input type="text" name="status" class="form-control" placeholder="Masukkan status" required="" />
+                                <input type="text" name="status" class="form-control" placeholder="Masukkan status" value="<?php echo $tb_barang['status_akun'] ?>" required="" />
 
                             </div>
                             <div class="form-group">
                                 <a href="<?php echo base_url('kelola_alat/index') ?>" class="btn btn-light-primary">Kembali</a>
-                                <button class="btn btn-primary">Tambahkan dan Simpan</button>
+                                <button class="btn btn-primary">Simpan Dan Perbarui</button>
                             </div>
 
 
