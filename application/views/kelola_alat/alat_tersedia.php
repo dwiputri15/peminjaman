@@ -125,7 +125,7 @@
                                                <th>Kode Matkul</th>
                                                <th>Nama Alat</th>
                                                <th>Jumlah Alat</th>
-                                               <th>Semester</th>
+                                               <th>Status</th>
                                                <th>Aksi</th>
                                            </tr>
                                        </thead>
