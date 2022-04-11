@@ -74,7 +74,7 @@ class Kelola_alat extends CI_Controller
 
         $this->M_barang->delete($kode_alat);
 
-        $isi_pesan = 'Kode matakuliah ' . $kode_alat . ' berhasil dihapus';
+        $isi_pesan = 'Alat Praktikum ' . $kode_alat . ' Berhasil Dihapus';
         $this->session->set_flashdata('pesan', $isi_pesan);
 
 
@@ -116,7 +116,7 @@ class Kelola_alat extends CI_Controller
         // eksekusi model
         $this->M_barang->edit($ambilBarang, $tb_barang);
 
-        $isi_pesan = "Matakuliah " . $ambilNama . ' berhasil diperbarui';
+        $isi_pesan = "Alat Praktikum " . $ambilNama . ' Berhasil Diperbarui';
         // $isi_pesan = "Matakuliah berhasil ditambah";
         $this->session->set_flashdata('pesan', $isi_pesan);
 

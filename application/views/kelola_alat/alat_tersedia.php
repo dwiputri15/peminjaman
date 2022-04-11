@@ -121,7 +121,7 @@
                                    <table class="table table-bordered table-checkable" id="kt_datatable">
                                        <thead>
                                            <tr>
-                                               <th>Kode Alat</th>
+                                               <th>Kode Barang</th>
                                                <th>Kode Matkul</th>
                                                <th>Nama Alat</th>
                                                <th>Jumlah Alat</th>

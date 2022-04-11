@@ -30,7 +30,7 @@ class M_barang extends CI_Model
     function edit($ambilBarang, $kode_alat)
     {
 
-        $this->db->where('kode_alat', $ambilBarang);
+        $this->db->where('kode_barang', $ambilBarang);
         $this->db->update('tb_barang', $kode_alat);
     }
 

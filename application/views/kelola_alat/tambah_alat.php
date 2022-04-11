@@ -42,7 +42,7 @@
                         <form action="<?php echo base_url('kelola_alat/proses_ambil') ?>" method="POST">
 
                             <div class="form-group">
-                                <label>Kode Alat</label>
+                                <label>Kode Barang</label>
                                 <input type="text" name="kd_barang" class="form-control" placeholder="Masukkan Kode Barang" required="" />
                                 <small>Kode Barang Alat Praktikum</small>
                             </div>

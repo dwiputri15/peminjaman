@@ -35,20 +35,20 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card card-body">
-                        <h4 style="margin-bottom: 20px;">Form Tambah Alat Praktikum</h4>
+                        <h4 style="margin-bottom: 20px;">Form Edit Alat Praktikum</h4>
 
 
 
-                        <form action="<?php echo base_url('kelola_alat/proses_ambil') ?>" method="POST">
+                        <form action="<?php echo base_url('kelola_alat/proses_edit') ?>" method="POST">
 
                             <div class="form-group">
-                                <label>Kode Alat</label>
-                                <input type="text" name="kd_barang" class="form-control" placeholder="Masukkan Kode Barang" value="<?php echo $tb_barang['kode_barang'] ?>" required="" />
+                                <label>Kode Barang</label>
+                                <input type="text" name="kd_barang" class="form-control" placeholder="Masukkan Kode Barang" value="<?php echo $tb_barang['kode_barang'] ?>" required="" readonly />
                                 <small>Kode Barang Alat Praktikum</small>
                             </div>
                             <div class="form-group">
                                 <label>Kode Matakuliah</label>
-                                <input type="text" name="kd_matkul" class="form-control" placeholder="Masukkan Kode Matakuliah" value="<?php echo $tb_barang['kode_matkul'] ?>" required="" />
+                                <input type="text" name="kd_matkul" class="form-control" placeholder="Masukkan Kode Matakuliah" value="<?php echo $tb_barang['kode_matkul'] ?>" required="" readonly />
 
                             </div>
                             <div class="row">
