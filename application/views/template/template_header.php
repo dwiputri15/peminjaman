@@ -115,7 +115,7 @@
                             <li class="menu-item" aria-haspopup="true">
                                 <a href="<?php echo base_url('registrasi/index') ?>" class="menu-link">
                                     <i class="menu-icon flaticon2-architecture-and-city"></i>
-                                    <span class="menu-text">Tambah Pengguna</span>
+                                    <span class="menu-text">Alat Yang Dipinjam </span>
                                 </a>
                             </li>
 
