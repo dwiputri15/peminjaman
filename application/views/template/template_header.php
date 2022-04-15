@@ -101,21 +101,21 @@
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
-                                <a href="<?php echo base_url('kelola_alat/tambah_alat') ?>" class="menu-link">
+                                <a href="<?php echo base_url('kelola_alat/index') ?>" class="menu-link">
                                     <i class="menu-icon flaticon2-architecture-and-city"></i>
-                                    <span class="menu-text">Tambah Alat</span>
+                                    <span class="menu-text">Alat Yang Tersedia</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
                                 <a href="<?php echo base_url('peminjaman_alat/index') ?>" class="menu-link">
                                     <i class="menu-icon flaticon2-architecture-and-city"></i>
-                                    <span class="menu-text">History Peminjaman</span>
+                                    <span class="menu-text">Alat Yang Dipinjam</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
-                                <a href="<?php echo base_url('registrasi/index') ?>" class="menu-link">
+                                <a href="<?php echo base_url('peminjaman_alat/pengembalian') ?>" class="menu-link">
                                     <i class="menu-icon flaticon2-architecture-and-city"></i>
-                                    <span class="menu-text">Alat Yang Dipinjam </span>
+                                    <span class="menu-text">History Peminjaman </span>
                                 </a>
                             </li>
 
