@@ -23,7 +23,78 @@
     <!--end::Global Theme Styles-->
     <!--begin::Layout Themes(used by all pages)-->
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href=http://siakad.polinema.ac.id/assets/global/img/logo-polinema.png />
+    <link rel="shortcut icon" href="http://siakad.polinema.ac.id/assets/global/img/logo-polinema.png" />
+
+    <script>
+    	var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+    </script>
+    <!--begin::Global Config(global config for global JS scripts)-->
+    <script>
+    	var KTAppSettings = {
+    		"breakpoints": {
+    			"sm": 576,
+    			"md": 768,
+    			"lg": 992,
+    			"xl": 1200,
+    			"xxl": 1400
+    		},
+    		"colors": {
+    			"theme": {
+    				"base": {
+    					"white": "#ffffff",
+    					"primary": "#3699FF",
+    					"secondary": "#E5EAEE",
+    					"success": "#1BC5BD",
+    					"info": "#8950FC",
+    					"warning": "#FFA800",
+    					"danger": "#F64E60",
+    					"light": "#E4E6EF",
+    					"dark": "#181C32"
+    				},
+    				"light": {
+    					"white": "#ffffff",
+    					"primary": "#E1F0FF",
+    					"secondary": "#EBEDF3",
+    					"success": "#C9F7F5",
+    					"info": "#EEE5FF",
+    					"warning": "#FFF4DE",
+    					"danger": "#FFE2E5",
+    					"light": "#F3F6F9",
+    					"dark": "#D6D6E0"
+    				},
+    				"inverse": {
+    					"white": "#ffffff",
+    					"primary": "#ffffff",
+    					"secondary": "#3F4254",
+    					"success": "#ffffff",
+    					"info": "#ffffff",
+    					"warning": "#ffffff",
+    					"danger": "#ffffff",
+    					"light": "#464E5F",
+    					"dark": "#ffffff"
+    				}
+    			},
+    			"gray": {
+    				"gray-100": "#F3F6F9",
+    				"gray-200": "#EBEDF3",
+    				"gray-300": "#E4E6EF",
+    				"gray-400": "#D1D3E0",
+    				"gray-500": "#B5B5C3",
+    				"gray-600": "#7E8299",
+    				"gray-700": "#5E6278",
+    				"gray-800": "#3F4254",
+    				"gray-900": "#181C32"
+    			}
+    		},
+    		"font-family": "Poppins"
+    	};
+    </script>
+    <!--end::Global Config-->
+    <!--begin::Global Theme Bundle(used by all pages)-->
+    <script src="<?php echo base_url('demo13/dist/assets/') ?>plugins/global/plugins.bundle.js"></script>
+    <script src="<?php echo base_url('demo13/dist/assets/') ?>plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <script src="<?php echo base_url('demo13/dist/assets/') ?>js/scripts.bundle.js"></script>
+    
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -90,32 +161,43 @@
                         <ul class="menu-nav">
                             <li class="menu-item" aria-haspopup="true">
                                 <a href="<?php echo base_url('dashboard/index') ?>" class="menu-link">
-                                    <i class="menu-icon flaticon2-architecture-and-city"></i>
+                                <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo13/dist/../src/media/svg/icons/Home/Home.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z" fill="#000000"/>
+                                    </g>
+                                </svg><!--end::Svg Icon--></span>
                                     <span class="menu-text">Dashboard</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
                                 <a href="<?php echo base_url('matakuliah/index') ?>" class="menu-link">
-                                    <i class="menu-icon flaticon2-architecture-and-city"></i>
+                                <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo13/dist/../src/media/svg/icons/Home/Book-open.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M13.6855025,18.7082217 C15.9113859,17.8189707 18.682885,17.2495635 22,17 C22,16.9325178 22,13.1012863 22,5.50630526 L21.9999762,5.50630526 C21.9999762,5.23017604 21.7761292,5.00632908 21.5,5.00632908 C21.4957817,5.00632908 21.4915635,5.00638247 21.4873465,5.00648922 C18.658231,5.07811173 15.8291155,5.74261533 13,7 C13,7.04449645 13,10.79246 13,18.2438906 L12.9999854,18.2438906 C12.9999854,18.520041 13.2238496,18.7439052 13.5,18.7439052 C13.5635398,18.7439052 13.6264972,18.7317946 13.6855025,18.7082217 Z" fill="#000000"/>
+                                        <path d="M10.3144829,18.7082217 C8.08859955,17.8189707 5.31710038,17.2495635 1.99998542,17 C1.99998542,16.9325178 1.99998542,13.1012863 1.99998542,5.50630526 L2.00000925,5.50630526 C2.00000925,5.23017604 2.22385621,5.00632908 2.49998542,5.00632908 C2.50420375,5.00632908 2.5084219,5.00638247 2.51263888,5.00648922 C5.34175439,5.07811173 8.17086991,5.74261533 10.9999854,7 C10.9999854,7.04449645 10.9999854,10.79246 10.9999854,18.2438906 L11,18.2438906 C11,18.520041 10.7761358,18.7439052 10.4999854,18.7439052 C10.4364457,18.7439052 10.3734882,18.7317946 10.3144829,18.7082217 Z" fill="#000000" opacity="0.3"/>
+                                    </g>
+                                </svg><!--end::Svg Icon--></span>
                                     <span class="menu-text">Matkul</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
                                 <a href="<?php echo base_url('kelola_alat/index') ?>" class="menu-link">
                                     <i class="menu-icon flaticon2-architecture-and-city"></i>
-                                    <span class="menu-text">Alat Yang Tersedia</span>
+                                    <span class="menu-text">Alat</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
                                 <a href="<?php echo base_url('peminjaman_alat/index') ?>" class="menu-link">
                                     <i class="menu-icon flaticon2-architecture-and-city"></i>
-                                    <span class="menu-text">Alat Yang Dipinjam</span>
+                                    <span class="menu-text">Peminjaman</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
                                 <a href="<?php echo base_url('peminjaman_alat/pengembalian') ?>" class="menu-link">
                                     <i class="menu-icon flaticon2-architecture-and-city"></i>
-                                    <span class="menu-text">History Peminjaman </span>
+                                    <span class="menu-text">Pengembalian</span>
                                 </a>
                             </li>
 

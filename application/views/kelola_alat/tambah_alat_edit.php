@@ -47,10 +47,17 @@
                                 <small>Kode Barang Alat Praktikum</small>
                             </div>
                             <div class="form-group">
-                                <label>Kode Matakuliah</label>
-                                <input type="text" name="kd_matkul" class="form-control" placeholder="Masukkan Kode Matakuliah" value="<?php echo $tb_barang['kode_matkul'] ?>" required="" readonly />
-
-                            </div>
+                                    <label>Kode Matakuliah</label>
+                                    <select name="kd_matkul" class="form-control" id="" required="">
+                                        <option value="">Pilih kode matakuliah</option>
+                                        
+                                        <?php foreach ( $tb_matkul AS $mk ) : ?>
+                                        
+                                        <option value="<?php echo $mk['kode_matkul'] ?>" <?php if ($tb_barang['kode_matkul'] == $mk['kode_matkul']) echo 'selected="selected"'; ?>><?php echo $mk['kode_matkul'] ?> | <?php echo $mk['nama'] ?></option>
+                                        
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -69,7 +76,18 @@
                             </div>
                             <div class="form-group">
                                 <label>Status </label>
-                                <input type="text" name="status" class="form-control" placeholder="Masukkan status" value="<?php echo $tb_barang['status_akun'] ?>" required="" />
+                                    <div class="radio-inline">
+                                        <label class="radio">
+                                            <input type="radio" name="status" value="tersedia" <?php if ( $tb_barang['status_akun'] == "tersedia" ) echo 'checked'; ?>/>
+                                            <span></span>
+                                            Tersedia
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="status" value="disimpan" <?php if ( $tb_barang['status_akun'] == "disimpan" ) echo 'checked'; ?>/>
+                                            <span></span>
+                                            Disimpan
+                                        </label>
+                                    </div>
 
                             </div>
                             <div class="form-group">

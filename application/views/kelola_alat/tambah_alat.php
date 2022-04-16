@@ -48,8 +48,15 @@
                             </div>
                             <div class="form-group">
                                 <label>Kode Matakuliah</label>
-                                <input type="text" name="kd_matkul" class="form-control" placeholder="Masukkan Kode Matakuliah" required="" />
-
+                                <select name="kd_matkul" class="form-control" id="" required="">
+                                    <option value="">Pilih kode matakuliah</option>
+                                    
+                                    <?php foreach ( $tb_matkul AS $mk ) : ?>
+                                    
+                                    <option value="<?php echo $mk['kode_matkul'] ?>"><?php echo $mk['kode_matkul'] ?> | <?php echo $mk['nama'] ?></option>
+                                    
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -69,8 +76,18 @@
                             </div>
                             <div class="form-group">
                                 <label>Status </label>
-                                <input type="text" name="status" class="form-control" placeholder="Masukkan status" required="" />
-
+                                <div class="radio-inline">
+                                	<label class="radio">
+                                		<input type="radio" name="status" value="tersedia" />
+                                		<span></span>
+                                		Tersedia
+                                	</label>
+                                	<label class="radio">
+                                		<input type="radio" name="status" value="disimpan" />
+                                		<span></span>
+                                		Disimpan
+                                	</label>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <a href="<?php echo base_url('kelola_alat/index') ?>" class="btn btn-light-primary">Kembali</a>

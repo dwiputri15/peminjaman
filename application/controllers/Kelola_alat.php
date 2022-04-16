@@ -13,6 +13,7 @@ class Kelola_alat extends CI_Controller
 
         // panggil model 
         $this->load->model('M_barang');
+        $this->load->model('M_matakuliah');
     }
 
 
@@ -32,8 +33,11 @@ class Kelola_alat extends CI_Controller
 
     function tambah_alat()
     {
+
+        $data['tb_matkul'] = $this->M_matakuliah->get_matakuliah();
+
         $this->load->view('template/template_header');
-        $this->load->view('kelola_alat/tambah_alat');
+        $this->load->view('kelola_alat/tambah_alat', $data);
         $this->load->view('template/template_footer');
     }
 
@@ -86,6 +90,7 @@ class Kelola_alat extends CI_Controller
     {
 
         $data['tb_barang'] = $this->M_barang->get_kode_barang($kode_alat);
+        $data['tb_matkul'] = $this->M_matakuliah->get_matakuliah();
 
         $this->load->view('template/template_header');
         $this->load->view('kelola_alat/tambah_alat_edit', $data);

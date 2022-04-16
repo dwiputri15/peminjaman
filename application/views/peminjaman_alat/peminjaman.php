@@ -196,32 +196,28 @@
                             <tr>
                                 <th title="Field #1">ID Peminjaman</th>
                                 <th title="Field #2">Identitas Mahasiswa</th>
-                                <th title="Field #3">Matakuliah</th>
-                                <th title="Field #4">Nama Alat</th>
                                 <th title="Field #5">Jumlah Alat</th>
-                                <th title="Field #6">Tanggal Peminjaman </th>
-                                <th title="Field #7">Status </th>
+                                <th title="Field #6">Tanggal Peminjaman</th>
+                                <th title="Field #6">Tanggal Kembali</th>
+                                <th title="Field #7" width="10%">Status </th>
+                                <th title="Field #7">Opsi </th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>0006-3629</td>
-                                <td>1931130011
-                                    <span>Dwi Putri Rahayu</span>
-                                    <span> D3 T.Telekom </span>
-                                    <span> 3A </span>
-                                    <span> 01 </span>
+                            <td>0006-3629</td>
+                                <td>1931130011 Dwi Putri Rahayu</td>
+                               
+                                <td>23</td>
+                                <td>16 April 2022</td>
+                                <td>17 April 2022</td>
+                                <td>
+                                    <span class="label label-danger label-pill label-inline text-center" style="color: #fefefe">New</span>
                                 </td>
-                                <td>Praktikum Telekomunikasi</td>
-                                <td> Multimeter
-                                    <span>Generator Fungsi</span>
+                                <td>
+                                    <a href="<?php echo base_url('peminjaman_alat/detail') ?>" class="btn btn-sm btn-primary btn-block">Lihat detail</a>
                                 </td>
-                                <td> 1
-                                    <span> 1</span>
-                                </td>
-                                <td>2016-11-28</td>
-                                <td class="text-right">1</td>
 
                             </tr>
                         </tbody>
@@ -237,76 +233,51 @@
     <!--end::Entry-->
 </div>
 <!--end::Content-->
+
+
 <script>
-    var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+    'use strict';
+// Class definition
+
+var KTDatatableHtmlTableDemo = function() {
+  // Private functions
+
+  // demo initializer
+  var demo = function() {
+
+    var datatable = $('#kt_datatable').KTDatatable({
+      data: {
+        saveState: {cookie: false},
+      },
+      search: {
+        input: $('#kt_datatable_search_query'),
+        key: 'generalSearch',
+      },
+      layout: {
+        class: 'datatable-bordered',
+      }
+    });
+
+    $('#kt_datatable_search_status').on('change', function() {
+      datatable.search($(this).val().toLowerCase(), 'Status');
+    });
+
+    $('#kt_datatable_search_type').on('change', function() {
+      datatable.search($(this).val().toLowerCase(), 'Type');
+    });
+
+  };
+
+  return {
+    // Public functions
+    init: function() {
+      // init dmeo
+      demo();
+    },
+  };
+}();
+
+jQuery(document).ready(function() {
+  KTDatatableHtmlTableDemo.init();
+});
 </script>
-<!--begin::Global Config(global config for global JS scripts)-->
-<script>
-    var KTAppSettings = {
-        "breakpoints": {
-            "sm": 576,
-            "md": 768,
-            "lg": 992,
-            "xl": 1200,
-            "xxl": 1400
-        },
-        "colors": {
-            "theme": {
-                "base": {
-                    "white": "#ffffff",
-                    "primary": "#3699FF",
-                    "secondary": "#E5EAEE",
-                    "success": "#1BC5BD",
-                    "info": "#8950FC",
-                    "warning": "#FFA800",
-                    "danger": "#F64E60",
-                    "light": "#E4E6EF",
-                    "dark": "#181C32"
-                },
-                "light": {
-                    "white": "#ffffff",
-                    "primary": "#E1F0FF",
-                    "secondary": "#EBEDF3",
-                    "success": "#C9F7F5",
-                    "info": "#EEE5FF",
-                    "warning": "#FFF4DE",
-                    "danger": "#FFE2E5",
-                    "light": "#F3F6F9",
-                    "dark": "#D6D6E0"
-                },
-                "inverse": {
-                    "white": "#ffffff",
-                    "primary": "#ffffff",
-                    "secondary": "#3F4254",
-                    "success": "#ffffff",
-                    "info": "#ffffff",
-                    "warning": "#ffffff",
-                    "danger": "#ffffff",
-                    "light": "#464E5F",
-                    "dark": "#ffffff"
-                }
-            },
-            "gray": {
-                "gray-100": "#F3F6F9",
-                "gray-200": "#EBEDF3",
-                "gray-300": "#E4E6EF",
-                "gray-400": "#D1D3E0",
-                "gray-500": "#B5B5C3",
-                "gray-600": "#7E8299",
-                "gray-700": "#5E6278",
-                "gray-800": "#3F4254",
-                "gray-900": "#181C32"
-            }
-        },
-        "font-family": "Poppins"
-    };
-</script>
-<!--end::Global Config-->
-<!--begin::Global Theme Bundle(used by all pages)-->
-<script src="<?php echo base_url('demo13/dist/assets/') ?>plugins/global/plugins.bundle.js"></script>
-<script src="<?php echo base_url('demo13/dist/assets/') ?>plugins/custom/prismjs/prismjs.bundle.js"></script>
-<script src="<?php echo base_url('demo13/dist/assets/') ?>js/scripts.bundle.js"></script>
-<!--end::Global Theme Bundle-->
-<!--begin::Page Scripts(used by this page)-->
-<script src="<?php echo base_url('demo13/dist/assets/') ?>js/pages/crud/ktdatatable/base/html-table.js"></script>
-<!--end::Page Scripts-->
