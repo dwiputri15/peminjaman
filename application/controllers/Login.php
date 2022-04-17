@@ -56,6 +56,15 @@
                 // @TODO 4 : Pencocokan password
                 if ( password_verify($ambilPassword, $informasi['password']) ){
 
+
+                    // ambil data petugas
+                    $petugas = $this->db->get_where('tb_petugas', ['id_user' => $informasi['id_user']])->row_array();
+
+                    // tambahkan session id petugas
+                    $this->session->set_userdata('id_user', $informasi['id_user']);
+                    $this->session->set_userdata('id_petugas', $petugas['id_petugas']);
+                    $this->session->set_userdata('nama', $petugas['nama']);
+
                     // controller/function
                     redirect('dashboard/index');
 

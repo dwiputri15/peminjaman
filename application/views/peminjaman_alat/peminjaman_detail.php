@@ -47,30 +47,38 @@
                                 </div>
                                 <div class="col-md-10">
                                     <h1 style="margin-top: 20px">Laporan Peminjaman</h1>
-                                    <b>#<?php echo strtoupper(uniqid()) ?></b> &emsp;|&emsp;
-                                    dibuat pada <?php echo date('d F Y H.i A') ?>
+                                    <b>Peminjaman #<?php echo $peminjaman[0]['id_peminjaman'] ?></b> &emsp;|&emsp;
+                                    dibuat pada <?php echo date('d F Y H.i A', strtotime($peminjaman[0]['pembuatan'])) ?>
                                 </div>
                             </div>
 
                             <div class="row" style="margin-top: 20px">
                                 <div class="col-md-9">
                                     <small>Nama Mahasiswa</small><br>
-                                    <b>Dwi Putri Rahayu</b>
+                                    <b><?php echo $peminjaman[0]['nama'] ?></b>
                                     
                                     <br><br>
                                     
                                     <small>NIM</small><br>
-                                    <b>1931130011</b>
+                                    <b><?php echo $peminjaman[0]['NIM'] ?></b>
 
                                 </div>
                                 <div class="col-md-3">
                                     <small>Tanggal Peminjaman</small><br>
-                                    <b><?php echo date('d F Y') ?></b>
+                                    <b><?php echo date('d F Y', strtotime($peminjaman[0]['tanggal_awal'])) ?></b>
                                     
                                     <br><br>
                                     
                                     <small>Tanggal Kembali</small><br>
-                                    <b>-</b>
+                                    <b>
+                                        <?php if ( $peminjaman[0]['status'] == "selesai" ) {
+
+                                            echo date('d F Y', strtotime($peminjaman[0]['tanggal_berakhir']));
+                                        } else {
+
+                                            echo '-';
+                                        } ?>
+                                    </b>
 
                                 </div>
                             </div>
@@ -88,38 +96,34 @@
                                     <td>Nama Alat</td>
                                     <td>Jumlah</td>
                                 </tr>
+                                <?php 
+                                $nomor = 1;
+                                foreach ( $peminjaman AS $row ) : ?>
                                 <tr>
-                                    <td>1</td>
+                                    <td><?php echo $nomor ?></td>
                                     <td>
-                                        IF-001<br>
-                                        <small>kd-mk : MK-001</small>
+                                        <?php echo $row['kode_barang'] ?><br>
+                                        <small>kd-mk : <?php echo $row['kode_matkul'] ?></small>
                                     </td>
                                     <td>
-                                        Resistor <br>
-                                        <small>Internet of Things</small>
+                                        <?php echo $row['nama_barang'] ?> <br>
+                                        <small><?php echo $row['nama_matkul'] ?></small>
 
                                     </td>
-                                    <td>10 item</td>
+                                    <td><?php echo $row['jumlah'] ?> item</td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>
-                                        IF-002<br>
-                                        <small>kd-mk : MK-001</small>
-                                    </td>
-                                    <td>
-                                        Kapasitor <br>
-                                        <small>Embedded</small>
-                                    </td>
-                                    <td>10 item</td>
-                                </tr>
+                                <?php 
+                                
+                                    $nomor++;
+                                endforeach;
+                                ?>
                             </table>
 
                             <hr>
 
                             <h6>Keterangan</h6>
-                            <div class="card card-body" style="background-color: #e0e0e0">
-                                -
+                            <div class="card card-body" style="background-color: #f2f2f2">
+                                <?php echo $peminjaman[0]['keterangan'] ?>
                             </div>
                             
                             <small>Keterangan seperti barang rusak atau catatan tambahan</small>

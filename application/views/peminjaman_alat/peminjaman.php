@@ -205,21 +205,44 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ( $peminjaman->result_array() AS $row ) : ?>
                             <tr>
-                            <td>0006-3629</td>
-                                <td>1931130011 Dwi Putri Rahayu</td>
-                               
-                                <td>23</td>
-                                <td>16 April 2022</td>
-                                <td>17 April 2022</td>
+                                <td><?php echo $row['id_peminjaman'] ?></td>
+                                <td><?php echo $row['NIM'].' '.$row['nama'] ?></td>
+                                <td><?php echo $row['jumlah_peminjaman'] ?> item</td>
+                                <td><?php echo date('d F Y', strtotime($row['tanggal_awal'])) ?></td>
+                                <td><?php echo date('d F Y', strtotime($row['tanggal_berakhir'])) ?></td>
                                 <td>
-                                    <span class="label label-danger label-pill label-inline text-center" style="color: #fefefe">New</span>
+                                    <?php
+                                        $color = "";
+                                        $text  = "";
+
+
+                                        if ( $row['status'] == "dipinjam" ) {
+
+                                            $color = "primary";
+                                            $text = "Sedang Dipinjam";
+
+                                        } else if ( $row['status'] == "sebagian" ) {
+
+                                            $color = "warning";
+                                            $text = "Sebagian";
+                                        
+                                        } else if ( $row['status'] == "selesai" ) {
+
+                                            $color = "success";
+                                            $text = "Selesai";
+                                        }
+                                    
+                                    ?>
+                                    <span class="label label-<?php echo $color ?> label-pill label-inline text-center" style="color: #fefefe"><?php echo $text ?></span>
                                 </td>
                                 <td>
-                                    <a href="<?php echo base_url('peminjaman_alat/detail') ?>" class="btn btn-sm btn-primary btn-block">Lihat detail</a>
+                                    <a href="<?php echo base_url('peminjaman_alat/detail/'. $row['id_peminjaman']) ?>" class="btn btn-sm btn-primary btn-block">Lihat detail</a>
                                 </td>
 
                             </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                     <!--end: Datatable-->
