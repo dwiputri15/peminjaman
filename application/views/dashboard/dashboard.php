@@ -37,7 +37,7 @@
 			<!--begin::Dashboard-->
 
 			<!--begin::Row-->
-			<div class="row">
+			<div class="row" style="margin-top: 100px">
 				<div class="col-lg-4">
 					<!--begin::Stats Widget 16-->
 					<a href="#" class="card card-custom card-stretch gutter-b">
@@ -54,8 +54,8 @@
 								</svg>
 								<!--end::Svg Icon-->
 							</span>
-							<div class="text-inverse-white font-weight-bolder font-size-h5 mb-2 mt-5">Matakuliah</div>
-							<div class="font-weight-bold text-inverse-white font-size-sm"></div>
+							<div class="text-inverse-white font-weight-bolder font-size-h5 mb-2 mt-5">Alat Dipinjam</div>
+							<div class="font-weight-bold text-inverse-white font-size-sm">Total peminjaman saat ini yaitu <?php echo $pinjam ?> aktif</div>
 						</div>
 						<!--end::Body-->
 					</a>
@@ -77,8 +77,8 @@
 								</svg>
 								<!--end::Svg Icon-->
 							</span>
-							<div class="text-inverse-info font-weight-bolder font-size-h5 mb-2 mt-5">Alat Yang Dipinjam</div>
-							<div class="font-weight-bold text-inverse-info font-size-sm"></div>
+							<div class="text-inverse-info font-weight-bolder font-size-h5 mb-2 mt-5">Peminjaman Selesai</div>
+							<div class="font-weight-bold text-inverse-info font-size-sm">Total peminjaman yang telah selesai <?php echo $kembali ?> data</div>
 						</div>
 						<!--end::Body-->
 					</a>
@@ -102,8 +102,8 @@
 								</svg>
 								<!--end::Svg Icon-->
 							</span>
-							<div class="text-inverse-dark font-weight-bolder font-size-h5 mb-2 mt-5">Kelola Alat</div>
-							<div class="font-weight-bold text-inverse-dark font-size-sm"></div>
+							<div class="text-inverse-dark font-weight-bolder font-size-h5 mb-2 mt-5">Alat Keseluruhan</div>
+							<div class="font-weight-bold text-inverse-dark font-size-sm">Total jenis alat laboratorium terkini <?php echo $alat ?> item</div>
 						</div>
 						<!--end::Body-->
 					</a>

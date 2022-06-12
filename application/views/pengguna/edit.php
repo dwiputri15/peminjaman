@@ -39,7 +39,7 @@
 
 
 
-                        <form action="<?php echo base_url('pengguna/proses_edit') ?>" method="POST">
+                        <form action="<?php echo base_url('pengguna/proses_edit/'. $petugas['id_user']) ?>" method="POST">
 
                             <div class="row">
                                 <div class="col-md-6">
@@ -62,14 +62,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Username</label>
-                                        <input type="text" name="username" class="form-control" placeholder="Masukkan username . . ." value="<?php echo $petugas['username'] ?>" required="" />
+                                        <input type="text" name="username" class="form-control" placeholder="Masukkan username . . ." value="<?php echo $petugas['username'] ?>" disabled />
                                         <small>Berisi username</small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" name="password" class="form-control" placeholder="Masukan password . . ." value="<?php echo $petugas['password'] ?>" required="" />
+                                        <input type="password" name="password" class="form-control" placeholder="Masukan password . . ." value="" />
                                         <small>Berisi kata sandi</small>
                                     </div>
                                 </div>

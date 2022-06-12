@@ -93,6 +93,17 @@
             echo password_hash("123", PASSWORD_ARGON2I);
 
         }
+
+
+
+
+
+        function logout() {
+
+
+            $this->session->sess_destroy();
+            redirect('login/index');
+        }
     }
     
     /* End of file Login.php */

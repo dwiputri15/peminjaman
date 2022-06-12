@@ -52,7 +52,7 @@ class Pengguna extends CI_Controller
             // 'nama'          => $ambilNama,
             // 'NIP'           => $ambilNip,
             'username'      => $ambilUsername,
-            'password'      => $ambilPassword,
+            'password'      => password_hash($ambilPassword, PASSWORD_ARGON2I),
             'status_akun'   => $ambilStatus
 
         );
@@ -60,7 +60,17 @@ class Pengguna extends CI_Controller
 
 
         //masukke db 
-        $this->M_pengguna->insert($tb_pengguna);
+        $id_user = $this->M_pengguna->insert($tb_pengguna);
+
+        $tb_petugas = array(
+
+            'id_user'   => $id_user,
+            'NIP'       => $ambilNip,
+            'nama'      => $ambilNama
+        );
+
+        $this->M_pengguna->insert_petugas( $tb_petugas );
+    
         // $this->M_pengguna->insert_petugas($tb_petugas);
 
 
@@ -72,45 +82,73 @@ class Pengguna extends CI_Controller
     }
 
     //edit 
-    function edit($nama_petugas)
+    function edit($id_user)
     {
-        $data['petugas'] = $this->M_pengguna->get_nama_petugas($nama_petugas);
+    
+        $data['petugas'] = $this->M_pengguna->get_id_petugas($id_user);
 
         $this->load->view('template/template_header');
         $this->load->view('pengguna/edit', $data);
         $this->load->view('template/template_footer');
     }
 
-    function proses_edit()
+    function proses_edit( $id_user )
     {
+
+
+        $tb_user = $this->M_pengguna->get_id_petugas($id_user);
 
         //ambil inputan user
         $ambilNama      = $this->input->post('nama');
         $ambilNip       = $this->input->post('nip');
-        $ambilUsername  = $this->input->post('username');
         $ambilPassword  = $this->input->post('password');
         $ambilStatus    = $this->input->post('status');
 
-        //deklarasi tb db
+
+        $password = "";
+
+        if ( !empty( $ambilPassword ) ) {
+
+            $password = password_hash($ambilPassword, PASSWORD_ARGON2I);
+        }else {
+
+            $password = $tb_user['password'];
+        }
+
+        // tabel user 
         $tb_pengguna = array(
 
-            // 'nama'          => $ambilNama,
-            // 'NIP'           => $ambilNip,
-
-            'password'      => $ambilPassword,
+            'password'      => $password,
             'status_akun'   => $ambilStatus
+        );
 
+        $tb_petugas = array(
+
+            'NIP'   => $ambilNip,
+            'nama'  => $ambilNama
         );
 
 
+        // proses update
+        $this->M_pengguna->proses_edit_user( $tb_pengguna, $id_user );
+        $this->M_pengguna->proses_edit_petugas( $tb_petugas, $id_user );
 
-        //masukke db 
-        $this->M_pengguna->get_nama_petugas($ambilUsername, $tb_pengguna);
-        // $this->M_pengguna->insert_petugas($tb_petugas);
 
-
-        $isi_pesan = "Admin " . $ambilUsername . ' berhasil diubah';
+        $isi_pesan = "Admin " . $ambilNama . ' berhasil diubah';
         // $isi_pesan = "Matakuliah berhasil ditambah";
+        $this->session->set_flashdata('pesan', $isi_pesan);
+
+        redirect('pengguna/index');
+    }
+
+
+
+    // hapus
+    function hapus( $id_user ) {
+
+        $this->M_pengguna->proses_hapus( $id_user );    
+
+        $isi_pesan = "Operasi berhasil pada ". date('d F Y H.i A');
         $this->session->set_flashdata('pesan', $isi_pesan);
 
         redirect('pengguna/index');

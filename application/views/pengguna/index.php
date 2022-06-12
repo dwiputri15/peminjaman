@@ -115,8 +115,15 @@
 											</td>
 											<td><?php echo $pgs['created_at'] ?></td>
 											<td>
-												<a href="" class="btn btn-light-danger btn-sm">Hapus</a>
-												<a href="<?php echo base_url('pengguna/edit/' . $pgs['nama']) ?>" class="btn btn-warning btn-sm">Sunting</a>
+												<?php if ( $pgs['username'] != "admin" ) : ?>
+												<a href="<?php echo base_url('pengguna/hapus/'. $pgs['id_user']) ?>" onclick="return confirm('Apakah anda yakin ingin menghapus petugas ini ?')" class="btn btn-light-danger btn-sm">Hapus</a>
+												
+												<?php else: ?>
+												
+													<a class="btn btn-light-primary btn-sm disabled">Admin</a>
+												
+												<?php endif; ?>
+												<a href="<?php echo base_url('pengguna/edit/' . $pgs['id_user']) ?>" class="btn btn-warning btn-sm">Sunting</a>
 											</td>
 										</tr>
 
