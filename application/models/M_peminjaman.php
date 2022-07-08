@@ -99,6 +99,26 @@
 
             return $this->db->get()->result_array();
         }
+
+
+
+
+
+        // data mobile
+        function history_peminjaman_mobile() {
+
+            $nim = $this->session->userdata('nim');
+
+            $this->db->select('tb_peminjaman.*, tb_mahasiswa.*, SUM(jumlah) AS jumlah_peminjaman')->from('tb_peminjaman');
+            $this->db->join('tb_peminjaman_detail', 'tb_peminjaman.id_peminjaman = tb_peminjaman_detail.id_peminjaman');
+            $this->db->join('tb_mahasiswa', 'tb_mahasiswa.NIM = tb_peminjaman.NIM');
+
+            $this->db->where('tb_mahasiswa.NIM', $nim);
+            $this->db->group_by('id_peminjaman');
+            
+            
+            return $this->db->get();
+        } 
     }
     
     /* End of file M_peminjaman.php */

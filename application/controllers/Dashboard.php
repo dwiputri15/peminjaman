@@ -3,8 +3,10 @@
 class Dashboard extends CI_Controller
 {
 
+
     public function index()
     {
+        
 
         $this->load->model('M_dashboard');
         $this->load->view('template/template_header');

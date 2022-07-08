@@ -21,6 +21,14 @@
             $query = $this->db->get('tb_matakuliah')->row_array();
             return $query;
         }
+        
+        function get_matakuliah_berdasarkan_smt( $smt ) {
+
+            $this->db->where('semester', $smt);
+
+            $query = $this->db->get('tb_matakuliah')->result_array();
+            return $query;
+        }
 
         
         function insert_matakuliah( $tb_matakuliah_controller ) {

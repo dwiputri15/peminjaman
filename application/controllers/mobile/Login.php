@@ -1,0 +1,56 @@
+<?php 
+
+    
+    defined('BASEPATH') OR exit('No direct script access allowed');
+    
+    class Login extends CI_Controller {
+        
+        public function __construct() {
+
+            parent::__construct();
+        }
+
+        public function index(){
+            
+            $this->load->view('mobile/login/view_login');
+        }
+
+
+
+        public function logout() {
+
+            $this->session->sess_destroy();
+            redirect('mobile/login');
+        }
+
+
+
+        // cek login
+        public function process() {
+
+            $nim = $this->input->post('nim');
+
+            $cek = $this->db->get_where('tb_mahasiswa', ['NIM' => $nim]);
+            if ( $cek->num_rows() > 0 ) {
+
+                $kolom = $cek->row_array();
+                $session = array(
+
+                    'nim'   => $kolom['NIM'],
+                    'nama'   => $kolom['nama'],
+                );
+                $this->session->set_userdata( $session );
+
+                redirect('mobile/dashboard');
+
+            } else {
+
+                $this->session->set_flashdata('msg-error', 'login_error');
+                redirect('mobile/login');
+            }
+        }
+    
+    }
+    
+    /* End of file Login.php */
+    

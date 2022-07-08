@@ -12,6 +12,16 @@ class M_barang extends CI_Model
         $query = $this->db->get('tb_barang')->result_array();
         return $query;
     }
+    
+    function get_barang_berdasarkanmatkul( $kode_matkul )
+    {
+
+        $where = ['kode_matkul' => $kode_matkul];
+        
+        $query = $this->db->get_where('tb_barang', $where)->result_array();
+        
+        return $query;
+    }
 
 
     function insert($tb_barang)
