@@ -34,8 +34,8 @@
         <div class="login-form mt-1">
             <img src="https://1.bp.blogspot.com/-PpH7CcrJIvE/X5WGsZUp6LI/AAAAAAAADRE/VIw1_NyjUC4HUnijuO1r2WBG4tfjpJGbgCLcBGAsYHQ/s1920/Logo%2BPolinema%2B%2528Politeknik%2BNegeri%2BMalang%2529.png" style="width: 150px" alt="" />
             <div class="section mt-1">
-                <h2>Login Aplikasi</h2>
-                <h4>masukkan email dan kata sandi anda dibawah ini untuk melanjutkan</h4>
+                <h2>Registrasi</h2>
+                <h4>Lengkapi form dibawah ini untuk mendaftar kedalam aplikasi</h4>
             </div>
             <div class="section mt-1 mb-5" style="margin-top: 100px !important">
                 
@@ -44,13 +44,7 @@
                     <b>Maaf</b>, email dan kata sandi tidak ditemukan
                 </div>
                 <?php } ?>
-                
-                <?php if ( $this->session->flashdata('msg-error') == "register" ) { ?>
-                <div class="alert alert-success mb-1" role="alert">
-                    <b>Pemberitahuan</b>, Selamat Datang Pendaftaran Anda Berhasil
-                </div>
-                <?php } ?>
-                <form action="<?php echo base_url('mobile/login/process') ?>" method="POST">
+                <form action="<?php echo base_url('mobile/login/prosesregister') ?>" method="POST">
                     <div class="form-group boxed">
                         <div class="input-wrapper">
                             <input type="number" name="nim" class="form-control" id="nim" placeholder="Masukkan NIM anda . . ." required="">
@@ -59,16 +53,44 @@
                             </i>
                         </div>
                     </div>
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan Nama anda . . ." required="">
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                        </div>
+                    </div>
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <select name="prodi" class="form-control form-select" style="width: 100%" required="">
+                                <option value="">Prodi Jurusan dan Teknik</option>
+                                <option value="D3 Teknik Telekomunikasi">D3 Teknik Telekomunikasi</option>
+                                <option value="D4 Jurusan Telekomunikasi Digital">D4 Jurusan Telekomunikasi Digital</option>
+                            </select>
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                        </div>
+                    </div>
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <input type="text" name="kelas" class="form-control" placeholder="Masukkan Kelas anda . . ." required="">
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                        </div>
+                    </div>
 
                     <div class="form-links mt-2">
                         <div>
-                            <a href="<?php echo base_url('mobile/login/register') ?>">Pendaftaran Baru</a>
+                            <a href="<?php echo base_url('mobile/login/index') ?>">Kembali Halaman Login</a>
                         </div>
                         <!-- <div><a href="<?php echo base_url() ?>" class="text-muted">Halaman Kuisioner</a></div> -->
                     </div>
 
                     <div class="form-button-group">
-                        <button type="submit" class="btn btn-primary btn-block btn-lg">Masuk</button>
+                        <button type="submit" class="btn btn-success btn-block btn-lg">Daftar Akun</button>
                     </div>
 
                 </form>

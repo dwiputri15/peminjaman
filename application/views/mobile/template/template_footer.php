@@ -140,8 +140,8 @@
                 </div>
             </div>
         </div>
-    </div> -->
-    <!-- * welcome notification -->
+    </div>
+    * welcome notification -->
 
     <!-- ///////////// Js Files ////////////////////  -->
     <!-- Bootstrap-->
@@ -158,9 +158,10 @@
     <script src="<?php echo base_url() ?>assets/template-mobile/js/base.js"></script>
 
     <script>
-        setTimeout(() => {
-            notification('notification-welcome', 5000);
-        }, 2000);
+        // setTimeout(() => {
+        //     notification('notification-welcome', 5000);
+        // }, 2000);
+
     </script>
 
 </body>

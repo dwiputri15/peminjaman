@@ -116,6 +116,14 @@
             );
             
             $this->cart->insert($data);
+
+
+            $html = '
+            <div id="message" class="alert alert-secondary">
+                <small>Item '.$barang['nama_barang'].' berhasil ditambahkan</small>
+            </div>';
+            $this->session->set_flashdata('pesan', $html);
+
             redirect('mobile/peminjaman/listbarang');
             
         }
@@ -198,7 +206,7 @@
             $this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
 
 
-            redirect('mobile/peminjaman/verifikasi_peminjaman');
+            redirect('mobile/peminjaman/verifikasi_peminjaman/'. $id_peminjaman);
 
         }
 
@@ -225,10 +233,16 @@
         }
 
 
-        public function verifikasi_peminjaman() {
+        public function verifikasi_peminjaman( $id_peminjaman ) {
 
+            $peminjaman = $this->db->get_where('tb_peminjaman', ['id_peminjaman' => $id_peminjaman])->row_array();
+            $image_qr = base_url('assets/qrcode/'. $peminjaman['qrcode']);
+
+
+            $data['img_qr']         = $image_qr;
+            $data['id_peminjaman']  = $id_peminjaman;
             $this->load->view('mobile/template/template_header');
-            $this->load->view('mobile/scan/view_scan_peminjaman');
+            $this->load->view('mobile/scan/view_scan_peminjaman', $data);
             $this->load->view('mobile/template/template_footer');
         }
 
@@ -260,6 +274,47 @@
                 $status = false;
             }
             echo json_encode( ['status' => $status, 'qr' => $qr] );
+        }
+
+
+
+
+
+        // check status verifikasi (apabila telah disetujui atau diputuskan oleh petugas)
+        public function cekverifikasiadmin( $id_peminjaman ) {
+
+            $peminjaman = $this->db->get_where('tb_peminjaman', ['id_peminjaman' => $id_peminjaman])->row_array();
+            $status = $peminjaman['status'];
+
+
+            echo json_encode( ['status' => $status, 'id' => $id_peminjaman] );
+        }
+
+
+
+
+
+        // cek notifikasi
+        public function notifikasi() {
+
+            $nim = $this->session->userdata('nim');
+            $cek_peminjaman = $this->db->get_where('tb_peminjaman', ['status'   => "dipinjam"]);
+
+
+            $status = false;
+            if ( $cek_peminjaman->num_rows() > 0 ) {
+
+                // ambil data pengecekan
+                $kolom = $cek_peminjaman->row_array();
+                
+                // ambil waktu peminjaman
+                // tanggal maksimal 4 jam sejak awal tgl peminjaman
+                
+
+            } else {
+
+
+            }
         }
     
     

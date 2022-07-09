@@ -49,6 +49,31 @@
                 redirect('mobile/login');
             }
         }
+
+
+
+        // register
+        public function register() {
+
+            $this->load->view('mobile/login/view_register');
+        }
+
+
+        public function prosesregister() {
+
+            $data = array(
+
+                'NIM'   => $this->input->post('nim'),
+                'nama'  => $this->input->post('nama'),
+                'prodi' => $this->input->post('prodi'),
+                'kelas' => $this->input->post('kelas'),
+            );
+
+            $this->db->insert('tb_mahasiswa', $data);
+            
+            $this->session->set_flashdata('msg-error', 'register');
+            redirect('mobile/login');
+        }
     
     }
     

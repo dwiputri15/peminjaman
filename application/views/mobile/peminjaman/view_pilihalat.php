@@ -9,6 +9,9 @@
 
 
         <div class="section mt-3 mb-3">
+
+            <?php echo $this->session->flashdata('pesan') ?>
+            <br>
             <div class="card">
                 <ul class="listview flush transparent image-listview text">
                     
@@ -41,13 +44,15 @@
 
 
          <!-- bottom center -->
-        <div class="fab-button text bottom-center" style="margin-bottom: 100px">
+        <div class="fab-button text bottom-center" style="margin-bottom: 100px" onload="toastbox('toast-4', 2000)">
             <a href="#" class="fab" data-toggle="modal" data-target="#ModalBasic">
                 <ion-icon name="add-outline"></ion-icon>
                 Selesaikan
             </a>
         </div>
         <!-- * bottom center -->
+
+        
 
 
 
@@ -136,5 +141,14 @@
                     }
                 })
             })
+
+
+
+            function autohide(){
+
+                alert("Called");
+                $('#message').fadeOut();
+            }
+            
         })
     </script>
