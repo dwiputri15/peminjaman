@@ -39,12 +39,12 @@
             </div>
             <div class="section mt-1 mb-5" style="margin-top: 100px !important">
                 
-                <?php if ( $this->session->flashdata('msg-error') == "login_error" ) { ?>
+                <?php if ( $this->session->flashdata('msg-error') == "register" ) { ?>
                 <div class="alert alert-danger mb-1" role="alert">
-                    <b>Maaf</b>, email dan kata sandi tidak ditemukan
+                    <b>Maaf</b>, Upload file KTM Gagal pastikan memiliki ekstensi jpg, jpeg, atau png
                 </div>
                 <?php } ?>
-                <form action="<?php echo base_url('mobile/login/prosesregister') ?>" method="POST">
+                <form action="<?php echo base_url('mobile/login/prosesregister') ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group boxed">
                         <div class="input-wrapper">
                             <input type="number" name="nim" class="form-control" id="nim" placeholder="Masukkan NIM anda . . ." required="">
@@ -56,6 +56,14 @@
                     <div class="form-group boxed">
                         <div class="input-wrapper">
                             <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan Nama anda . . ." required="">
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                        </div>
+                    </div>
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <input type="file" name="userfile" class="form-control" required="">
                             <i class="clear-input">
                                 <ion-icon name="close-circle"></ion-icon>
                             </i>

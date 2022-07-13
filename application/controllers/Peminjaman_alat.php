@@ -154,4 +154,34 @@ class Peminjaman_alat extends CI_Controller
 
         redirect('peminjaman_alat/pengembalian?search='. $search);
     }
+
+
+
+
+    // konfirmasi
+    public function konfirmasipersetujuan( $id_peminjaman, $status ) {
+
+        $this->db->where('id_peminjaman', $id_peminjaman)->update('tb_peminjaman', ['status' => $status]);
+        redirect('peminjaman_alat/index');
+    }
+
+
+
+    public function verifikasipeminjaman() {
+
+        $qr = $this->input->get('qr');
+        // cek validitas peminjaman berdasarkan kode
+        $peminjaman = $this->db->get_where('tb_peminjaman', ['id_peminjaman' => $qr, "status" => "disetujui"])->num_rows();
+        $html = '<div class="alert alert-danger">Pemberitahuan<br><small>Kode peminjaman tidak valid</small></div>';
+
+        if ( $peminjaman > 0 ) {
+
+            $this->db->where('id_peminjaman', $qr)->update('tb_peminjaman', ['status' => "dipinjam"]);
+            $html = '<div class="alert alert-success">Pemberitahuan<br><small>Peminjaman telah berhasil disetujui</small></div>';
+        }
+
+        echo json_encode(["data" => $html]);
+
+        
+    }
 }

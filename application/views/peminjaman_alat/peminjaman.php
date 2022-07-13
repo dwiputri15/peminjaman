@@ -47,14 +47,18 @@
                         </svg>
                         <!--end::Svg Icon-->
                     </span>
-                </div>
-                <div class="alert-text">
-                    <p>The Metronic Datatable component supports initialization from HTML table. It also defines the schema model of the data source. In addition to the visualization, the Datatable provides built-in support for operations over data such as sorting, filtering and paging performed in user browser (frontend).</p>For more information visit
-                    <a class="font-weight-bold" href="https://keenthemes.com/metronic/?page=docs&amp;section=html/components/datatable" target="_blank">Metronic KTDatatable Documentation</a>.
+
+                    <div class="alert-text">
+                        <p>Verifikasi Peminjaman Baru</p>
+                        <small>Scan QR dibawah ini untuk mensetujui peminjaman</small>
+                    </div>
                 </div>
             </div>
+
             <!--end::Notice-->
             <!--begin::Card-->
+
+            <div id="message-verif"></div>
             <div class="card card-custom">
                 <div class="card-header flex-wrap border-0 pt-6 pb-0">
                     <div class="card-title">
@@ -98,6 +102,15 @@
                 </div>
                 <div class="card-body">
                     <!--begin: Search Form-->
+                    <div class="row">
+                            <div class="col-md-5">
+                                <form id="form-submit-verifikasi">
+                                    <div class="form-group">
+                                        <input type="text" name="qr" class="form-control" placeholder="Scan atau masukkan kode peminjaman . . ." autofocus />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     <!--begin::Search Form-->
                     <div class="mb-2">
                         <div class="row align-items-center">
@@ -174,7 +187,7 @@
                     <table class="datatable datatable-bordered datatable-head-custom" id="kt_datatable">
                         <thead>
                             <tr>
-                                <th title="Field #1">ID Peminjaman</th>
+                                <th width="3%">ID</th>
                                 <th title="Field #2">Identitas Mahasiswa</th>
                                 <th title="Field #5">Jumlah Alat</th>
                                 <th title="Field #6">Tanggal Peminjaman</th>
@@ -187,7 +200,8 @@
                         <tbody>
                             <?php 
                             
-                            $data = array();
+                            error_reporting(0);
+                            $data = array();    
 
                             
                             foreach ( $peminjaman->result_array() AS $row ) {
@@ -222,7 +236,17 @@
                                 <td><?php echo $row['NIM'].' '.$row['nama'] ?></td>
                                 <td><?php echo $row['jumlah_peminjaman'] ?> item</td>
                                 <td><?php echo date('d F Y', strtotime($row['tanggal_awal'])) ?></td>
-                                <td><?php echo date('d F Y', strtotime($row['tanggal_berakhir'])) ?></td>
+                                <td><?php 
+                                
+                                    if ( $row['tanggal_kembali'] ) {
+
+                                        echo date('d F Y', strtotime($row['tanggal_berakhir']));
+
+                                    } else {
+
+                                        echo "-";
+                                    }
+                                ?></td>
                                 <td>
                                     <?php
                                         $color = "";
@@ -234,10 +258,10 @@
                                             $color = "primary";
                                             $text = "Sedang Dipinjam";
 
-                                        } else if ( $row['status'] == "sebagian" ) {
+                                        } else if ( $row['status'] == "diproses" || $row['status'] == "disetujui" ) {
 
                                             $color = "warning";
-                                            $text = "Sebagian";
+                                            $text = ucfirst( $row['status'] );
                                         
                                         } else if ( $row['status'] == "selesai" ) {
 
@@ -249,7 +273,31 @@
                                     <span class="label label-<?php echo $color ?> label-pill label-inline text-center" style="color: #fefefe"><?php echo $text ?></span>
                                 </td>
                                 <td>
-                                    <a href="<?php echo base_url('peminjaman_alat/detail/'. $row['id_peminjaman']) ?>" class="btn btn-sm btn-primary btn-block">Lihat detail</a>
+                                    <!-- <a href="<?php echo base_url('peminjaman_alat/detail/'. $row['id_peminjaman']) ?>" class="btn btn-sm btn-primary btn-block">Lihat detail</a> -->
+                                    <a href="javascript:;" data-toggle="modal" data-target="#opsi-<?php echo $row['id_peminjaman'] ?>" class="btn btn-sm btn-primary btn-block">Opsi</a>
+
+                                    <!-- Modal-->
+                                    <div class="modal fade" id="opsi-<?php echo $row['id_peminjaman'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                                            <div class="modal-content">
+                                               
+                                                <div class="modal-body">
+                                                    <h4>Keputusan Peminjaman</h4>
+                                                    <small>Pilih tombol dibawah ini untuk menentukan keputusan dari peminjaman</small>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-sm btn-secondary font-weight-bold" data-dismiss="modal">Batal</button>
+                                                    <button type="button" class="btn btn-sm btn-light-primary font-weight-bold">Detail</button>
+                                                    
+                                                    <?php if ( $row['status'] == "diproses" ) : ?>
+                                                    <a href="<?php echo base_url('peminjaman_alat/konfirmasipersetujuan/'. $row['id_peminjaman'].'/ditolak') ?>" class="btn btn-sm btn-light-danger font-weight-bold">Tolak</a>
+                                                    <a href="<?php echo base_url('peminjaman_alat/konfirmasipersetujuan/'. $row['id_peminjaman'].'/disetujui') ?>" class="btn btn-sm btn-primary font-weight-bold">Terima</a>
+                                                    <?php endif ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </td>
 
                             </tr>
@@ -335,4 +383,29 @@ var KTDatatableHtmlTableDemo = function() {
 jQuery(document).ready(function() {
   KTDatatableHtmlTableDemo.init();
 });
+</script>
+
+
+
+<script>
+
+    $(function() {
+
+        $('#form-submit-verifikasi').submit(function( e ) {
+
+            $.ajax({
+
+                type: "GET",
+                url : "<?php echo base_url('peminjaman_alat/verifikasipeminjaman') ?>",
+                data: "qr=" + $('input[name="qr"]').val(),
+                dataType: "json",
+                success: function( hasil ) {
+
+                    $('#message-verif').html( hasil.data ).hide().fadeIn();
+                }
+            });
+
+            e.preventDefault();
+        });
+    })
 </script>

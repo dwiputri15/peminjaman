@@ -58,6 +58,8 @@
             $this->db->join('tb_peminjaman_detail', 'tb_peminjaman.id_peminjaman = tb_peminjaman_detail.id_peminjaman');
             $this->db->join('tb_mahasiswa', 'tb_mahasiswa.NIM = tb_peminjaman.NIM');
 
+            $this->db->order_by('tb_peminjaman.id_peminjaman', 'DESC');
+
             $this->db->group_by('id_peminjaman');
             
             

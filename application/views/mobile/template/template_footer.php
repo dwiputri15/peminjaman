@@ -118,13 +118,13 @@
     <!-- * App Sidebar -->
 
     <!-- welcome notification  -->
-    <!-- <div id="notification-welcome" class="notification-box">
+    <div id="notification-welcome" class="notification-box">
         <div class="notification-dialog android-style">
             <div class="notification-header">
                 <div class="in">
-                    <img src="<?php echo base_url() ?>assets/template-mobile/img/icon/72x72.png" alt="image" class="imaged w24">
-                    <strong>Dosen</strong>
-                    <span>just now</span>
+                    <img src="https://1.bp.blogspot.com/-PpH7CcrJIvE/X5WGsZUp6LI/AAAAAAAADRE/VIw1_NyjUC4HUnijuO1r2WBG4tfjpJGbgCLcBGAsYHQ/s1920/Logo%2BPolinema%2B%2528Politeknik%2BNegeri%2BMalang%2529.png" alt="image" class="imaged w24">
+                    <strong>Laboratorium</strong>
+                    <span>Baru saja</span>
                 </div>
                 <a href="#" class="close-button">
                     <ion-icon name="close"></ion-icon>
@@ -132,16 +132,16 @@
             </div>
             <div class="notification-content">
                 <div class="in">
-                    <h3 class="subtitle">Welcome Dwi Nur</h3>
+                    <h3 class="subtitle">Halo <?php echo $this->session->userdata('nama') ?></h3>
                     <div class="text">
-                        Mobilekit is a PWA ready Mobile UI Kit Template.
-                        Great way to start your mobile websites and pwa projects.
+                        Anda memiliki peminjaman yang belum dikembalikan, silahkan segera diselesaikan<br>
+                        <small id="caption-peminjaman"></small>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    * welcome notification -->
+    <!-- * welcome notification -->
 
     <!-- ///////////// Js Files ////////////////////  -->
     <!-- Bootstrap-->
@@ -158,9 +158,32 @@
     <script src="<?php echo base_url() ?>assets/template-mobile/js/base.js"></script>
 
     <script>
-        // setTimeout(() => {
-        //     notification('notification-welcome', 5000);
-        // }, 2000);
+      
+
+
+      
+
+        setInterval(notifaktif, (1000 * 10));
+
+
+        function notifaktif() {
+
+            $.ajax({
+
+                type: "GET",
+                url : "<?php echo base_url('mobile/peminjaman/notifikasi') ?>",
+                dataType: "json",
+                success: function( hasil ) {
+
+                    if ( hasil.status ) {
+
+                        console.log( hasil );
+                        $('#caption-peminjaman').text( hasil.data );
+                        notification('notification-welcome', 1000 * 10);
+                    }
+                }
+            })
+        }
 
     </script>
 

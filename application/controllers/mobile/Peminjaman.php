@@ -298,10 +298,11 @@
         public function notifikasi() {
 
             $nim = $this->session->userdata('nim');
-            $cek_peminjaman = $this->db->get_where('tb_peminjaman', ['status'   => "dipinjam"]);
+            $cek_peminjaman = $this->db->get_where('tb_peminjaman', ['status'   => "dipinjam", "NIM" => $nim]);
 
 
             $status = false;
+            $data = [];
             if ( $cek_peminjaman->num_rows() > 0 ) {
 
                 // ambil data pengecekan
@@ -309,12 +310,27 @@
                 
                 // ambil waktu peminjaman
                 // tanggal maksimal 4 jam sejak awal tgl peminjaman
-                
+                $tgl_pinjam = $kolom['tanggal_awal'];
+                $batas = strtotime($tgl_pinjam);
 
-            } else {
+                $min = 1 * 240; // 4 jam
+                $now  = strtotime("now -{$min} minutes");
 
+                if ( $batas < $now ) {
+
+                    $status = true;
+
+                }
+
+                $data = "Peminjaman pada ". date('d F Y H.i A', strtotime( $kolom['tanggal_awal'] ));
 
             }
+
+            echo json_encode([
+
+                'status'    => $status,
+                'data'      => $data
+            ]);
         }
     
     
