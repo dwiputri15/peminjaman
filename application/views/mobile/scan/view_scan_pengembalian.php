@@ -109,6 +109,9 @@
                     }
                     $('#link-href').html( htmlLink );
                     $('#response').modal('show');
+
+
+                    // console.log( hasil );
                 }
             })
         }

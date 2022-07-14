@@ -259,12 +259,12 @@
         public function proses_pengembalian() {
 
             $qr = $this->input->get('qr');
-            $where = ['id_peminjaman', $qr];
+            $where = ['id_peminjaman' => $qr];
 
-            $cek = $this->db->get_where('tb_peminjaman', $where)->result_array();
+            $cek = $this->db->where($where)->get('tb_peminjaman')->num_rows();
             
 
-            if ( count($cek) == 1 ) {
+            if ( $cek == 1 ) {
 
                 $status = true;
                 $this->db->where('id_peminjaman', $qr)->update('tb_peminjaman', ['status' => "selesai"]);
@@ -273,7 +273,7 @@
 
                 $status = false;
             }
-            echo json_encode( ['status' => $status, 'qr' => $qr] );
+            echo json_encode( ['status' => $status, 'qr' => $where] );
         }
 
 
