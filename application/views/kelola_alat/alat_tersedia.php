@@ -121,8 +121,6 @@
                                    <table class="table table-bordered table-checkable" id="kt_datatable">
                                        <thead>
                                            <tr>
-                                               <th>Id Barang</th>
-                                               <th>NUP</th>
                                                <th>Kode Barang</th>
                                                <th>Kode Matkul</th>
                                                <th>Nama Alat</th>
@@ -134,11 +132,9 @@
                                        <tbody>
                                            <?php foreach ($tb_barang as $isi) : ?>
                                                <tr>
-                                                   <td><?php echo $isi['id_barang'] ?></td>
                                                    <td><?php echo $isi['kode_barang'] ?></td>
                                                    <td><?php echo $isi['kode_matkul'] ?></td>
                                                    <td><?php echo $isi['nama_barang'] ?></td>
-                                                   <td><?php echo $isi['nup'] ?></td>
                                                    <td><?php echo $isi['jumlah_barang'] ?></td>
                                                    <td><?php echo $isi['status_akun'] ?></td>
 

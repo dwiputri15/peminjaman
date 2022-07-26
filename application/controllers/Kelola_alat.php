@@ -44,21 +44,17 @@ class Kelola_alat extends CI_Controller
     // proses ambil value dari inputan user 
     function proses_ambil()
     {
-        $ambilID        = $this->input->post('id_barang');
         $ambilBarang    = $this->input->post('kd_barang');
         $ambilMatkul    = $this->input->post('kd_matkul');
         $ambilNama      = $this->input->post('nm_barang');
-        $ambilNup       = $this->input->post('nup_barang');
         $ambilJumlah    = $this->input->post('jmlh_barang');
         $ambilStatus    = $this->input->post('status');
 
         //proses deklarasi tb db
         $tb_barang = array(
-            'id_barang'        =>  $ambilID,
             'kode_barang'      =>  $ambilBarang,
             'kode_matkul'      =>  $ambilMatkul,
             'nama_barang'      =>  $ambilNama,
-            'nup'              =>  $ambilNup,
             'jumlah_barang'    =>  $ambilJumlah,
             'status_akun'      =>  $ambilStatus
 

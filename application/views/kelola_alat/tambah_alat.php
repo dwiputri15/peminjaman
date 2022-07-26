@@ -40,32 +40,21 @@
 
 
                         <form action="<?php echo base_url('kelola_alat/proses_ambil') ?>" method="POST">
-                            <div class="form-group">
-                                <label>Id Barang</label>
-                                <input type="text" name="id_barang" class="form-control" placeholder="Masukkan Kode Barang" required="" />
-                                <small>Masukkan Id Barang</small>
-                            </div>
 
                             <div class="form-group">
                                 <label>Kode Barang</label>
                                 <input type="text" name="kd_barang" class="form-control" placeholder="Masukkan Kode Barang" required="" />
                                 <small>Kode Barang Alat Praktikum</small>
                             </div>
-
-                            <div class="form-group">
-                                <label>NUP</label>
-                                <input type="text" name="nup_barang" class="form-control" placeholder="Masukkan Kode Barang" required="" />
-                                <small>kode NUP</small>
-                            </div>
                             <div class="form-group">
                                 <label>Kode Matakuliah</label>
                                 <select name="kd_matkul" class="form-control" id="" required="">
                                     <option value="">Pilih kode matakuliah</option>
-
-                                    <?php foreach ($tb_matkul as $mk) : ?>
-
-                                        <option value="<?php echo $mk['kode_matkul'] ?>"><?php echo $mk['kode_matkul'] ?> | <?php echo $mk['nama'] ?></option>
-
+                                    
+                                    <?php foreach ( $tb_matkul AS $mk ) : ?>
+                                    
+                                    <option value="<?php echo $mk['kode_matkul'] ?>"><?php echo $mk['kode_matkul'] ?> | <?php echo $mk['nama'] ?></option>
+                                    
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -88,16 +77,16 @@
                             <div class="form-group">
                                 <label>Status </label>
                                 <div class="radio-inline">
-                                    <label class="radio">
-                                        <input type="radio" name="status" value="tersedia" />
-                                        <span></span>
-                                        Tersedia
-                                    </label>
-                                    <label class="radio">
-                                        <input type="radio" name="status" value="disimpan" />
-                                        <span></span>
-                                        Disimpan
-                                    </label>
+                                	<label class="radio">
+                                		<input type="radio" name="status" value="tersedia" />
+                                		<span></span>
+                                		Tersedia
+                                	</label>
+                                	<label class="radio">
+                                		<input type="radio" name="status" value="disimpan" />
+                                		<span></span>
+                                		Disimpan
+                                	</label>
                                 </div>
                             </div>
                             <div class="form-group">

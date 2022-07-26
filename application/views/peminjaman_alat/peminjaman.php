@@ -71,19 +71,19 @@
                         <div class="dropdown dropdown-inline mr-2">
 
                             <?php
+                            
+                                $start = $this->input->get('start');
+                                $end = $this->input->get('end');
+                            
+                                $url = base_url('laporan/index');
 
-                            $start = $this->input->get('start');
-                            $end = $this->input->get('end');
+                                if ( !empty( $start ) ) {
 
-                            $url = base_url('laporan/index');
-
-                            if (!empty($start)) {
-
-                                $url = base_url('laporan/index?start=' . $start . '&end=' . $end);
-                            }
-
+                                    $url = base_url('laporan/index?start='. $start.'&end='. $end);
+                                }
+                            
                             ?>
-
+                        
                             <a href="<?php echo $url ?>" download class="btn btn-light-danger font-weight-bolder">
                                 <span class="svg-icon svg-icon-md">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Design/PenAndRuller.svg-->
@@ -103,14 +103,14 @@
                 <div class="card-body">
                     <!--begin: Search Form-->
                     <div class="row">
-                        <div class="col-md-5">
-                            <form id="form-submit-verifikasi">
-                                <div class="form-group">
-                                    <input type="text" name="qr" class="form-control" placeholder="Scan atau masukkan kode peminjaman . . ." autofocus />
-                                </div>
-                            </form>
+                            <div class="col-md-5">
+                                <form id="form-submit-verifikasi">
+                                    <div class="form-group">
+                                        <input type="text" name="qr" class="form-control" placeholder="Scan atau masukkan kode peminjaman . . ." autofocus />
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
                     <!--begin::Search Form-->
                     <div class="mb-2">
                         <div class="row align-items-center">
@@ -146,33 +146,37 @@
                         <form action="" method="GET">
 
 
-
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="input-group date" id="kt_datetimepicker_7_1" data-target-input="nearest">
-                                        <input type="text" name="start" class="form-control datetimepicker-input" placeholder="Start date" data-target="#kt_datetimepicker_7_1" value="<?php echo $start ?>" />
-                                        <div class="input-group-append" data-target="#kt_datetimepicker_7_1" data-toggle="datetimepicker">
-                                            <span class="input-group-text">
-                                                <i class="ki ki-calendar"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="input-group date" id="kt_datetimepicker_7_2" data-target-input="nearest">
-                                        <input type="text" name="end" class="form-control datetimepicker-input" placeholder="End date" data-target="#kt_datetimepicker_7_2" value="<?php echo $end ?>" />
-                                        <div class="input-group-append" data-target="#kt_datetimepicker_7_2" data-toggle="datetimepicker">
-                                            <span class="input-group-text">
-                                                <i class="ki ki-calendar"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <button class="btn btn-light-primary px-6 font-weight-bold">Tampilkan</button>
-                                    <a href="<?php echo base_url('peminjaman_alat') ?>" class="btn btn-light-warning px-6 font-weight-bold">Reset</a>
-                                </div>
+                       
+                        <div class="row">
+                        	<div class="col-md-3">
+                        		<div class="input-group date" id="kt_datetimepicker_7_1" data-target-input="nearest">
+                        			<input type="text" name="start" class="form-control datetimepicker-input"
+                        				placeholder="Start date" data-target="#kt_datetimepicker_7_1" value="<?php echo $start ?>" />
+                        			<div class="input-group-append" data-target="#kt_datetimepicker_7_1"
+                        				data-toggle="datetimepicker">
+                        				<span class="input-group-text">
+                        					<i class="ki ki-calendar"></i>
+                        				</span>
+                        			</div>
+                        		</div>
+                        	</div>
+                        	<div class="col-md-3">
+                        		<div class="input-group date" id="kt_datetimepicker_7_2" data-target-input="nearest">
+                        			<input type="text" name="end" class="form-control datetimepicker-input" placeholder="End date"
+                        				data-target="#kt_datetimepicker_7_2" value="<?php echo $end ?>" />
+                        			<div class="input-group-append" data-target="#kt_datetimepicker_7_2"
+                        				data-toggle="datetimepicker">
+                        				<span class="input-group-text">
+                        					<i class="ki ki-calendar"></i>
+                        				</span>
+                        			</div>
+                        		</div>
+                        	</div>
+                            <div class="col-md-4">
+                                <button class="btn btn-light-primary px-6 font-weight-bold">Tampilkan</button>
+                                <a href="<?php echo base_url('peminjaman_alat') ?>" class="btn btn-light-warning px-6 font-weight-bold">Reset</a>
                             </div>
+                        </div>
                         </form>
 
 
@@ -194,105 +198,109 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-
+                            <?php 
+                            
                             error_reporting(0);
-                            $data = array();
+                            $data = array();    
 
+                            
+                            foreach ( $peminjaman->result_array() AS $row ) {
 
-                            foreach ($peminjaman->result_array() as $row) {
-
-                                $tanggal = strtotime(date('Y-m-d', strtotime($row['tanggal_awal'])));
+                                $tanggal = strtotime( date('Y-m-d', strtotime($row['tanggal_awal'])) );
 
 
                                 // melakukan filter
-                                if (!empty($start)) {
+                                if ( !empty($start) ) {
 
-                                    $filterAwal = strtotime($start);
-                                    $filterAkhir = strtotime($end);
+                                    $filterAwal = strtotime( $start );
+                                    $filterAkhir = strtotime( $end );
 
-                                    if (($filterAwal <= $tanggal) && ($tanggal <= $filterAkhir)) {
+                                    if ( ($filterAwal <= $tanggal) && ($tanggal <= $filterAkhir) ) {
 
-                                        array_push($data, $row);
+                                        array_push( $data, $row );
                                     }
+                                    
                                 } else {
 
-                                    array_push($data, $row);
+                                    array_push( $data, $row );
                                 }
                             }
 
 
+                                
+                            
+                            
+                            foreach ( $data AS $row ) :?>
+                            <tr>
+                                <td><?php echo $row['id_peminjaman'] ?></td>
+                                <td><?php echo $row['NIM'].' '.$row['nama'] ?></td>
+                                <td><?php echo $row['jumlah_peminjaman'] ?> item</td>
+                                <td><?php echo date('d F Y', strtotime($row['tanggal_awal'])) ?></td>
+                                <td><?php 
+                                
+                                    if ( $row['tanggal_kembali'] ) {
 
+                                        echo date('d F Y', strtotime($row['tanggal_berakhir']));
 
+                                    } else {
 
-                            foreach ($data as $row) : ?>
-                                <tr>
-                                    <td><?php echo $row['id_peminjaman'] ?></td>
-                                    <td><?php echo $row['NIM'] . ' ' . $row['nama'] ?></td>
-                                    <td><?php echo $row['jumlah_peminjaman'] ?> item</td>
-                                    <td><?php echo date('d F Y', strtotime($row['tanggal_awal'])) ?></td>
-                                    <td><?php
-
-                                        if ($row['tanggal_kembali']) {
-
-                                            echo date('d F Y', strtotime($row['tanggal_berakhir']));
-                                        } else {
-
-                                            echo "-";
-                                        }
-                                        ?></td>
-                                    <td>
-                                        <?php
+                                        echo "-";
+                                    }
+                                ?></td>
+                                <td>
+                                    <?php
                                         $color = "";
                                         $text  = "";
 
 
-                                        if ($row['status'] == "dipinjam") {
+                                        if ( $row['status'] == "dipinjam" ) {
 
                                             $color = "primary";
                                             $text = "Sedang Dipinjam";
-                                        } else if ($row['status'] == "diproses" || $row['status'] == "disetujui") {
+
+                                        } else if ( $row['status'] == "diproses" || $row['status'] == "disetujui" ) {
 
                                             $color = "warning";
-                                            $text = ucfirst($row['status']);
-                                        } else if ($row['status'] == "selesai") {
+                                            $text = ucfirst( $row['status'] );
+                                        
+                                        } else if ( $row['status'] == "selesai" ) {
 
                                             $color = "success";
                                             $text = "Selesai";
                                         }
+                                    
+                                    ?>
+                                    <span class="label label-<?php echo $color ?> label-pill label-inline text-center" style="color: #fefefe"><?php echo $text ?></span>
+                                </td>
+                                <td>
+                                    <!-- <a href="<?php echo base_url('peminjaman_alat/detail/'. $row['id_peminjaman']) ?>" class="btn btn-sm btn-primary btn-block">Lihat detail</a> -->
+                                    <a href="javascript:;" data-toggle="modal" data-target="#opsi-<?php echo $row['id_peminjaman'] ?>" class="btn btn-sm btn-primary btn-block">Opsi</a>
 
-                                        ?>
-                                        <span class="label label-<?php echo $color ?> label-pill label-inline text-center" style="color: #fefefe"><?php echo $text ?></span>
-                                    </td>
-                                    <td>
-                                        <!-- <a href="<?php echo base_url('peminjaman_alat/peminjaman_detail/' . $row['id_peminjaman']) ?>" class="btn btn-sm btn-primary btn-block">Lihat detail</a> -->
-                                        <a href="javascript:;" data-toggle="modal" data-target="#opsi-<?php echo $row['id_peminjaman'] ?>" class="btn btn-sm btn-primary btn-block">Opsi</a>
-
-                                        <!-- Modal-->
-                                        <div class="modal fade" id="opsi-<?php echo $row['id_peminjaman'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-                                                <div class="modal-content">
-
-                                                    <div class="modal-body">
-                                                        <h4>Keputusan Peminjaman</h4>
-                                                        <small>Pilih tombol dibawah ini untuk menentukan keputusan dari peminjaman</small>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-sm btn-secondary font-weight-bold" data-dismiss="modal">Batal</button>
-                                                        <button type="button" class="btn btn-sm btn-light-primary font-weight-bold">Detail</button>
-
-                                                        <?php if ($row['status'] == "diproses") : ?>
-                                                            <a href="<?php echo base_url('peminjaman_alat/konfirmasipersetujuan/' . $row['id_peminjaman'] . '/ditolak') ?>" class="btn btn-sm btn-light-danger font-weight-bold">Tolak</a>
-                                                            <a href="<?php echo base_url('peminjaman_alat/konfirmasipersetujuan/' . $row['id_peminjaman'] . '/disetujui') ?>" class="btn btn-sm btn-primary font-weight-bold">Terima</a>
-                                                        <?php endif ?>
-                                                    </div>
+                                    <!-- Modal-->
+                                    <div class="modal fade" id="opsi-<?php echo $row['id_peminjaman'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                                            <div class="modal-content">
+                                               
+                                                <div class="modal-body">
+                                                    <h4>Keputusan Peminjaman</h4>
+                                                    <small>Pilih tombol dibawah ini untuk menentukan keputusan dari peminjaman</small>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-sm btn-secondary font-weight-bold" data-dismiss="modal">Batal</button>
+                                                    <button type="button" class="btn btn-sm btn-light-primary font-weight-bold">Detail</button>
+                                                    
+                                                    <?php if ( $row['status'] == "diproses" ) : ?>
+                                                    <a href="<?php echo base_url('peminjaman_alat/konfirmasipersetujuan/'. $row['id_peminjaman'].'/ditolak') ?>" class="btn btn-sm btn-light-danger font-weight-bold">Tolak</a>
+                                                    <a href="<?php echo base_url('peminjaman_alat/konfirmasipersetujuan/'. $row['id_peminjaman'].'/disetujui') ?>" class="btn btn-sm btn-primary font-weight-bold">Terima</a>
+                                                    <?php endif ?>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                    </td>
+                                </td>
 
-                                </tr>
+                            </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -311,90 +319,89 @@
 
 <script>
     'use strict';
-    // Class definition
+// Class definition
 
-    var KTDatatableHtmlTableDemo = function() {
-        // Private functions
+var KTDatatableHtmlTableDemo = function() {
+  // Private functions
 
-        // demo initializer
-        var demo = function() {
+  // demo initializer
+  var demo = function() {
 
-            var datatable = $('#kt_datatable').KTDatatable({
-                data: {
-                    saveState: {
-                        cookie: false
-                    },
-                },
-                search: {
-                    input: $('#kt_datatable_search_query'),
-                    key: 'generalSearch',
-                },
-                layout: {
-                    class: 'datatable-bordered',
-                }
-            });
-
-            $('#kt_datatable_search_status').on('change', function() {
-                datatable.search($(this).val().toLowerCase(), 'Status');
-            });
-
-            $('#kt_datatable_search_type').on('change', function() {
-                datatable.search($(this).val().toLowerCase(), 'Type');
-            });
-
-
-
-            // Demo 7
-            $('#kt_datetimepicker_7_1').datetimepicker({
-
-                format: 'L'
-            });
-
-            $('#kt_datetimepicker_7_2').datetimepicker({
-                useCurrent: false,
-                format: 'L'
-            });
-
-            $('#kt_datetimepicker_7_1').on('change.datetimepicker', function(e) {
-                $('#kt_datetimepicker_7_2').datetimepicker('minDate', e.date);
-            });
-            $('#kt_datetimepicker_7_2').on('change.datetimepicker', function(e) {
-                $('#kt_datetimepicker_7_1').datetimepicker('maxDate', e.date);
-            });
-
-
-        };
-
-        return {
-            // Public functions
-            init: function() {
-                // init dmeo
-                demo();
-            },
-        };
-    }();
-
-    jQuery(document).ready(function() {
-        KTDatatableHtmlTableDemo.init();
+    var datatable = $('#kt_datatable').KTDatatable({
+      data: {
+        saveState: {cookie: false},
+      },
+      search: {
+        input: $('#kt_datatable_search_query'),
+        key: 'generalSearch',
+      },
+      layout: {
+        class: 'datatable-bordered',
+      }
     });
+
+    $('#kt_datatable_search_status').on('change', function() {
+      datatable.search($(this).val().toLowerCase(), 'Status');
+    });
+
+    $('#kt_datatable_search_type').on('change', function() {
+      datatable.search($(this).val().toLowerCase(), 'Type');
+    });
+
+
+
+    // Demo 7
+        $('#kt_datetimepicker_7_1').datetimepicker({
+
+            format: 'L'
+        });
+
+        $('#kt_datetimepicker_7_2').datetimepicker({
+            useCurrent: false,
+            format: 'L'
+        });
+
+        $('#kt_datetimepicker_7_1').on('change.datetimepicker', function (e) {
+            $('#kt_datetimepicker_7_2').datetimepicker('minDate', e.date);
+        });
+        $('#kt_datetimepicker_7_2').on('change.datetimepicker', function (e) {
+            $('#kt_datetimepicker_7_1').datetimepicker('maxDate', e.date);
+        });
+
+
+  };
+
+  return {
+    // Public functions
+    init: function() {
+      // init dmeo
+      demo();
+    },
+  };
+}();
+
+jQuery(document).ready(function() {
+  KTDatatableHtmlTableDemo.init();
+});
 </script>
 
 
 
 <script>
+
     $(function() {
 
-        $('#form-submit-verifikasi').submit(function(e) {
+        $('#form-submit-verifikasi').submit(function( e ) {
 
             $.ajax({
 
                 type: "GET",
-                url: "<?php echo base_url('peminjaman_alat/verifikasipeminjaman') ?>",
+                url : "<?php echo base_url('peminjaman_alat/verifikasipeminjaman') ?>",
                 data: "qr=" + $('input[name="qr"]').val(),
                 dataType: "json",
-                success: function(hasil) {
+                success: function( hasil ) {
 
-                    $('#message-verif').html(hasil.data).hide().fadeIn();
+                    $('#message-verif').html( hasil.data ).hide().fadeIn();
                 }
             });
 
