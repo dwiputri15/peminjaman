@@ -24,19 +24,19 @@
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class="container">
-            
+
             <div class="row justify-content-center">
                 <div class="col-md-9">
-                    
+
                     <div class="card card-body" style="margin-bottom: 40px;">
-                        
+
                         <div class="row">
                             <div class="col-md-8 align-self-center">
                                 <h1 class="text-center">Konfirmasi Pengembalian</h1>
                                 <p class="text-center">Mahasiswa harap melakukan scanning QRCode untuk memverifikasi pengembalian</p>
                             </div>
                             <div class="col-md-4 text-center">
-                                <img src="<?php echo base_url('assets/qrcode/'. $peminjaman[0]['qrcode']) ?>" alt="Qr Code" style="width: 200px">
+                                <img src="<?php echo base_url('assets/qrcode/' . $peminjaman[0]['qrcode']) ?>" alt="Qr Code" style="width: 200px">
                             </div>
                         </div>
                     </div>
@@ -50,4 +50,3 @@
     <!--end::Entry-->
 </div>
 <!--end::Content-->
-

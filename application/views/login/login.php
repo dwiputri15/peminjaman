@@ -17,7 +17,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <head>
     <base href="../../../../">
     <meta charset="utf-8" />
-    <title>Login Page 3 | Keenthemes</title>
+    <title>Sistem Peminjaman Alat Politeknik Negeri Malang</title>
     <meta name="description" content="Login page example" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="canonical" href="https://keenthemes.com/metronic" />
@@ -34,7 +34,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Global Theme Styles-->
     <!--begin::Layout Themes(used by all pages)-->
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="<?php echo base_url('demo13/dist/assets/') ?>media/logos/favicon.ico" />
+    <link rel="shortcut icon" href="http://siakad.polinema.ac.id/assets/global/img/logo-polinema.png" />
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -57,7 +57,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="login-signin">
                         <div class="mb-20">
                             <h3>Selamat Datang</h3>
-                            <p class="opacity-60 font-weight-bold">Login terlebih dahulu untuk mengakses laboratorium ruang A2</p>
+                            <p class="opacity-60 font-weight-bold">Selamat Datang Di Labolatorium AI Politeknik Negeri Malang</p>
 
                             <?php echo $this->session->flashdata('pesan') ?>
                         </div>
@@ -68,22 +68,12 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="form-group">
                                 <input class="form-control h-auto text-white placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 mb-5" type="password" placeholder="Password" name="password" />
                             </div>
-                            <div class="form-group d-flex flex-wrap justify-content-between align-items-center px-8">
-                                <div class="checkbox-inline">
-                                    <label class="checkbox checkbox-outline checkbox-white text-white m-0">
-                                        <input type="checkbox" name="remember" />
-                                        <span></span>Remember me</label>
-                                </div>
-                                <a href="javascript:;" id="kt_login_forgot" class="text-white font-weight-bold">Forget Password ?</a>
-                            </div>
+
                             <div class="form-group text-center mt-10">
                                 <button class="btn btn-pill btn-outline-white font-weight-bold opacity-90 px-15 py-3">Masuk</button>
                             </div>
                         </form>
-                        <div class="mt-10">
-                            <span class="opacity-70 mr-4">Don't have an account yet?</span>
-                            <a href="javascript:;" id="kt_login_signup" class="text-white font-weight-bold">Sign Up</a>
-                        </div>
+
                     </div>
                     <!--end::Login Sign in form-->
                     <!--begin::Login Sign up form-->
